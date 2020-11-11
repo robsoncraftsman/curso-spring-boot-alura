@@ -5,21 +5,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Topico {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titulo;
 	private String mensagem;
 	private LocalDateTime dataCriacao = LocalDateTime.now();
+	@Enumerated(EnumType.STRING)
 	private StatusTopico status = StatusTopico.NAO_RESPONDIDO;
+	@ManyToOne
 	private Usuario autor;
+	@ManyToOne
 	private Curso curso;
+	@OneToMany(mappedBy = "topico")
 	private List<Resposta> respostas = new ArrayList<>();
 
-	public Topico(final String titulo, final String mensagem, final Curso curso) {
-		this.titulo = titulo;
-		this.mensagem = mensagem;
-		this.curso = curso;
+	public Topico() {
 	}
 
 	public Long getId() {
