@@ -2,6 +2,8 @@ package com.robsoncraftsman.alura.forum.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +41,7 @@ public class TopicosController {
 	}
 
 	@PostMapping
-	public ResponseEntity<TopicoDto> cadastrar(@RequestBody final TopicoForm topicoForm,
+	public ResponseEntity<TopicoDto> cadastrar(@RequestBody @Valid final TopicoForm topicoForm,
 			final UriComponentsBuilder uriBuilder) {
 		final var topico = topicoForm.converter(this.cursoRepository);
 		this.topicoRepository.save(topico);
