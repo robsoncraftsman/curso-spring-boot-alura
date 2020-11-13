@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 import com.robsoncraftsman.alura.forum.model.Topico;
 import com.robsoncraftsman.alura.forum.repository.CursoRepository;
 
-public class TopicoForm {
+public class CadastrarTopicoForm {
 
 	@NotNull
 	@NotEmpty

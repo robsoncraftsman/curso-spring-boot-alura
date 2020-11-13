@@ -20,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.robsoncraftsman.alura.forum.controller.dto.TopicoDetalhadoDto;
 import com.robsoncraftsman.alura.forum.controller.dto.TopicoResumidoDto;
 import com.robsoncraftsman.alura.forum.controller.form.AtualizarTopicoForm;
-import com.robsoncraftsman.alura.forum.controller.form.TopicoForm;
+import com.robsoncraftsman.alura.forum.controller.form.CadastrarTopicoForm;
 import com.robsoncraftsman.alura.forum.model.Topico;
 import com.robsoncraftsman.alura.forum.repository.CursoRepository;
 import com.robsoncraftsman.alura.forum.repository.TopicoRepository;
@@ -54,9 +54,9 @@ public class TopicosController {
 
 	@PostMapping
 	@Transactional
-	public ResponseEntity<TopicoResumidoDto> cadastrar(@RequestBody @Valid final TopicoForm topicoForm,
+	public ResponseEntity<TopicoResumidoDto> cadastrar(@RequestBody @Valid final CadastrarTopicoForm cadastrarTopicoForm,
 			final UriComponentsBuilder uriBuilder) {
-		final var topico = topicoForm.converter(this.cursoRepository);
+		final var topico = cadastrarTopicoForm.converter(this.cursoRepository);
 		this.topicoRepository.save(topico);
 
 		final var uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
