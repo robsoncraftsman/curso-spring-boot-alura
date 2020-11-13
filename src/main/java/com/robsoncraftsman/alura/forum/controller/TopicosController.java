@@ -46,7 +46,14 @@ public class TopicosController {
 		return TopicoDto.convert(topicos);
 	}
 
+	@GetMapping("/{id}")
+	public TopicoDetalhadoDto detalhar(@PathVariable final Long id) {
+		final var topico = this.topicoRepository.getOne(id);
+		return new TopicoDetalhadoDto(topico);
+	}
+
 	@PostMapping
+	@Transactional
 	public ResponseEntity<TopicoDto> cadastrar(@RequestBody @Valid final TopicoForm topicoForm,
 			final UriComponentsBuilder uriBuilder) {
 		final var topico = topicoForm.converter(this.cursoRepository);
@@ -54,12 +61,6 @@ public class TopicosController {
 
 		final var uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
 		return ResponseEntity.created(uri).body(new TopicoDto(topico));
-	}
-
-	@GetMapping("/{id}")
-	public TopicoDetalhadoDto detalhar(@PathVariable final Long id) {
-		final var topico = this.topicoRepository.getOne(id);
-		return new TopicoDetalhadoDto(topico);
 	}
 
 	@PutMapping("/{id}")
