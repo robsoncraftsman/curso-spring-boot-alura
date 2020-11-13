@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.robsoncraftsman.alura.forum.controller.dto.TopicoDetalhadoDto;
-import com.robsoncraftsman.alura.forum.controller.dto.TopicoDto;
+import com.robsoncraftsman.alura.forum.controller.dto.TopicoResumidoDto;
 import com.robsoncraftsman.alura.forum.controller.form.AtualizarTopicoForm;
 import com.robsoncraftsman.alura.forum.controller.form.TopicoForm;
 import com.robsoncraftsman.alura.forum.model.Topico;
@@ -35,7 +35,7 @@ public class TopicosController {
 	private CursoRepository cursoRepository;
 
 	@GetMapping
-	public List<TopicoDto> listar(final String nomeCurso) {
+	public List<TopicoResumidoDto> listar(final String nomeCurso) {
 		List<Topico> topicos;
 		if (nomeCurso == null) {
 			topicos = this.topicoRepository.findAll();
@@ -43,7 +43,7 @@ public class TopicosController {
 			topicos = this.topicoRepository.findByCursoNome(nomeCurso);
 		}
 
-		return TopicoDto.convert(topicos);
+		return TopicoResumidoDto.convert(topicos);
 	}
 
 	@GetMapping("/{id}")
@@ -54,22 +54,22 @@ public class TopicosController {
 
 	@PostMapping
 	@Transactional
-	public ResponseEntity<TopicoDto> cadastrar(@RequestBody @Valid final TopicoForm topicoForm,
+	public ResponseEntity<TopicoResumidoDto> cadastrar(@RequestBody @Valid final TopicoForm topicoForm,
 			final UriComponentsBuilder uriBuilder) {
 		final var topico = topicoForm.converter(this.cursoRepository);
 		this.topicoRepository.save(topico);
 
 		final var uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
-		return ResponseEntity.created(uri).body(new TopicoDto(topico));
+		return ResponseEntity.created(uri).body(new TopicoResumidoDto(topico));
 	}
 
 	@PutMapping("/{id}")
 	@Transactional
-	public ResponseEntity<TopicoDto> atualizar(@PathVariable final Long id,
+	public ResponseEntity<TopicoResumidoDto> atualizar(@PathVariable final Long id,
 			@RequestBody @Valid final AtualizarTopicoForm atualizarTopicoForm) {
 		final var topico = atualizarTopicoForm.atualizar(id, this.topicoRepository);
 
-		return ResponseEntity.ok(new TopicoDto(topico));
+		return ResponseEntity.ok(new TopicoResumidoDto(topico));
 	}
 
 	@DeleteMapping("/{id}")

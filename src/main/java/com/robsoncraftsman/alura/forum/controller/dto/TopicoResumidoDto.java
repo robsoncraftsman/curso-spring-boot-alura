@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 
 import com.robsoncraftsman.alura.forum.model.Topico;
 
-public class TopicoDto {
+public class TopicoResumidoDto {
 
 	private final Long id;
 	private final String titulo;
 	private final String mensagem;
 	private final LocalDateTime dataCriacao;
 
-	public TopicoDto(final Topico topico) {
+	public TopicoResumidoDto(final Topico topico) {
 		super();
 		this.id = topico.getId();
 		this.titulo = topico.getTitulo();
@@ -21,8 +21,8 @@ public class TopicoDto {
 		this.dataCriacao = topico.getDataCriacao();
 	}
 
-	public static List<TopicoDto> convert(final List<Topico> topicos) {
-		return topicos.stream().map(TopicoDto::new).collect(Collectors.toList());
+	public static List<TopicoResumidoDto> convert(final List<Topico> topicos) {
+		return topicos.stream().map(TopicoResumidoDto::new).collect(Collectors.toList());
 	}
 
 	public Long getId() {
