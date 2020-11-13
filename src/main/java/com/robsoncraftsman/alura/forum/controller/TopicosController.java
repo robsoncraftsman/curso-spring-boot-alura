@@ -21,7 +21,7 @@ import com.robsoncraftsman.alura.forum.controller.dto.TopicoDetalhadoDto;
 import com.robsoncraftsman.alura.forum.controller.dto.TopicoDto;
 import com.robsoncraftsman.alura.forum.controller.form.AtualizarTopicoForm;
 import com.robsoncraftsman.alura.forum.controller.form.TopicoForm;
-import com.robsoncraftsman.alura.forum.modelo.Topico;
+import com.robsoncraftsman.alura.forum.model.Topico;
 import com.robsoncraftsman.alura.forum.repository.CursoRepository;
 import com.robsoncraftsman.alura.forum.repository.TopicoRepository;
 

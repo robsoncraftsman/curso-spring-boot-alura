@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.robsoncraftsman.alura.forum.modelo.Resposta;
+import com.robsoncraftsman.alura.forum.model.Resposta;
 
 public class RespostaDto {
 
