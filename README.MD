@@ -5,3 +5,9 @@
 Instrutor: Rodrigo Ferreira
 
 Link para o curso: https://www.alura.com.br/curso-online-spring-boot-api-rest
+
+## Curso: Spring Boot API Rest: Segurança da API, Cache e Monitoramento
+
+Instrutor: Rodrigo Ferreira
+
+Link para o curso: https://www.alura.com.br/curso-online-spring-boot-seguranca-cache-monitoramento
