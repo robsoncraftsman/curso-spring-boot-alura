@@ -47,9 +47,13 @@ public class TopicosController {
 	}
 
 	@GetMapping("/{id}")
-	public TopicoDetalhadoDto detalhar(@PathVariable final Long id) {
-		final var topico = this.topicoRepository.getOne(id);
-		return new TopicoDetalhadoDto(topico);
+	public ResponseEntity<TopicoDetalhadoDto> detalhar(@PathVariable final Long id) {
+		final var topicoOptional = this.topicoRepository.findById(id);
+		if (topicoOptional.isPresent()) {
+			return ResponseEntity.ok(new TopicoDetalhadoDto(topicoOptional.get()));
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 	@PostMapping
