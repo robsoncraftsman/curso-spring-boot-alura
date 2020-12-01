@@ -1,8 +1,8 @@
 package com.robsoncraftsman.alura.forum.controller.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Page;
 
 import com.robsoncraftsman.alura.forum.model.Topico;
 
@@ -21,8 +21,8 @@ public class TopicoResumidoDto {
 		this.dataCriacao = topico.getDataCriacao();
 	}
 
-	public static List<TopicoResumidoDto> convert(final List<Topico> topicos) {
-		return topicos.stream().map(TopicoResumidoDto::new).collect(Collectors.toList());
+	public static Page<TopicoResumidoDto> convert(final Page<Topico> topicos) {
+		return topicos.map(TopicoResumidoDto::new);
 	}
 
 	public Long getId() {
