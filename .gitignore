@@ -1,7 +1,12 @@
+### Eclipse ###
 .settings
 .classpath
 .project
 target
+
+### InteliJ IDE ###
+/.idea/
+/curso-spring-boot-alura.iml
 
 ### STS ###
 .apt_generated
