@@ -11,3 +11,9 @@ Link para o curso: https://www.alura.com.br/curso-online-spring-boot-api-rest
 Instrutor: Rodrigo Ferreira
 
 Link para o curso: https://www.alura.com.br/curso-online-spring-boot-seguranca-cache-monitoramento
+
+## Projetos utilizados de terceiros:
+
+https://github.com/codecentric/spring-boot-admin
+
+
