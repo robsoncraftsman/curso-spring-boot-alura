@@ -46,10 +46,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/topicos").permitAll()
-			.antMatchers(HttpMethod.GET, "/topicos/**").permitAll()
+		.antMatchers(HttpMethod.GET, "/topicos/**").permitAll()
 		.antMatchers(HttpMethod.POST, "/auth").permitAll()
 		.antMatchers(HttpMethod.GET, "/actuator").permitAll()
-			.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
+		.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
 		.anyRequest().authenticated().and().csrf().disable()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().addFilterBefore(new AutenticacaoTokenFilter(this.tokenService, this.usuarioRepository),
@@ -59,6 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	// Configurações de recursos estáticos (js, css, imagens, etc...)
 	@Override
 	public void configure(final WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/v2/api-docs", "/swagger-ui/**", "/swagger-resources/**", "/webjars/**");
 	}
 
 	public static void main(final String[] args) {
