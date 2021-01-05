@@ -29,3 +29,7 @@ https://springfox.github.io/springfox/
 ```
 -Dspring.profiles.active=dev
 ```
+
+## Build do projeto
+
+mvn clean package

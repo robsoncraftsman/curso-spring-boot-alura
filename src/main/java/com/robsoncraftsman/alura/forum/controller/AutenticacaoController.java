@@ -18,7 +18,7 @@ import com.robsoncraftsman.alura.forum.security.TokenService;
 
 @RestController
 @RequestMapping("auth")
-@Profile("prod")
+@Profile(value = { "prod", "test" })
 public class AutenticacaoController {
 
 	@Autowired
