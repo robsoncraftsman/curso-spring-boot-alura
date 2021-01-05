@@ -3,6 +3,7 @@ package com.robsoncraftsman.alura.forum.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,7 +19,8 @@ import com.robsoncraftsman.alura.forum.repository.UsuarioRepository;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+@Profile("prod")
+public class SecurityConfigurationProd extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private AutenticacaoService autenticacaoService;
@@ -60,10 +62,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(final WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/v2/api-docs", "/swagger-ui/**", "/swagger-resources/**", "/webjars/**");
-	}
-
-	public static void main(final String[] args) {
-		System.out.println(new BCryptPasswordEncoder().encode("12345678"));
 	}
 
 }

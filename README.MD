@@ -21,3 +21,11 @@ Link para o curso: https://www.alura.com.br/curso-online-spring-boot-profiles-te
 https://github.com/codecentric/spring-boot-admin
 
 https://springfox.github.io/springfox/
+
+## Para rodar o projeto:
+
+- Setar o profile em "Run Configurations...":
+
+```
+-Dspring.profiles.active=dev
+```
