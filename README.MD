@@ -22,7 +22,7 @@ https://github.com/codecentric/spring-boot-admin
 
 https://springfox.github.io/springfox/
 
-## Para rodar o projeto:
+## Para rodar o projeto no eclipse:
 
 - Setar o profile em "Run Configurations...":
 
@@ -30,6 +30,13 @@ https://springfox.github.io/springfox/
 -Dspring.profiles.active=dev
 ```
 
-## Build do projeto
 
+## Build do projeto e rodar pelo JAR com profile 'prod' 
+
+```
 mvn clean package
+```
+
+```
+java -Dspring.profiles.active=prod -DFORUM_PORT=8888 -DFORUM_DATABASE_URL='jdbc:h2:mem:alura-forum' -DFORUM_DATABASE_USERNAME=sa -DFORUM_JWT_SECRET='A5nEP5uheU3TmfoOHqz7fmXeN0qFWlqmU+uMZO3yFHM=' -jar forum.jar
+```
