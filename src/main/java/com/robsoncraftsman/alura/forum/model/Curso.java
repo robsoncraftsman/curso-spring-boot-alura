@@ -16,10 +16,6 @@ public class Curso {
 	private String nome;
 	private String categoria;
 
-	public Curso() {
-
-	}
-
 	public Long getId() {
 		return this.id;
 	}
@@ -46,10 +42,7 @@ public class Curso {
 
 	@Override
 	public int hashCode() {
-		final var prime = 31;
-		var result = 1;
-		result = (prime * result) + ((this.id == null) ? 0 : this.id.hashCode());
-		return result;
+		return Objects.hash(this.id);
 	}
 
 	@Override
@@ -64,10 +57,7 @@ public class Curso {
 			return false;
 		}
 		final var other = (Curso) obj;
-		if (!Objects.equals(this.id, other.id)) {
-			return false;
-		}
-		return true;
+		return Objects.equals(this.id, other.id);
 	}
 
 }

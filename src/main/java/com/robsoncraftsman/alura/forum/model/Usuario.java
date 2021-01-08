@@ -71,10 +71,7 @@ public class Usuario implements UserDetails {
 
 	@Override
 	public int hashCode() {
-		final var prime = 31;
-		var result = 1;
-		result = (prime * result) + ((this.id == null) ? 0 : this.id.hashCode());
-		return result;
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -89,10 +86,7 @@ public class Usuario implements UserDetails {
 			return false;
 		}
 		final var other = (Usuario) obj;
-		if (!Objects.equals(this.id, other.id)) {
-			return false;
-		}
-		return true;
+		return Objects.equals(this.id, other.id);
 	}
 
 	@Override

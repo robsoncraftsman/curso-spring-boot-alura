@@ -88,7 +88,7 @@ public class TopicosController {
 	@DeleteMapping("/{id}")
 	@Transactional
 	@CacheEvict(value = "listaDeTopicos", allEntries = true)
-	public ResponseEntity<?> remover(@PathVariable final Long id) {
+	public ResponseEntity<Object> remover(@PathVariable final Long id) {
 		this.topicoRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}

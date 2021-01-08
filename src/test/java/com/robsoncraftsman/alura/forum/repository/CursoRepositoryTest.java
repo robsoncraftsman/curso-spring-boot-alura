@@ -16,7 +16,7 @@ import com.robsoncraftsman.alura.forum.model.Curso;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
-public class CursoRepositoryTest {
+class CursoRepositoryTest {
 
 	@Autowired
 	private CursoRepository cursoRepository;
@@ -25,7 +25,7 @@ public class CursoRepositoryTest {
 	private TestEntityManager em;
 
 	@Test
-	public void deveRetornarNomeDoCurso() {
+	void deveRetornarNomeDoCurso() {
 		final var novoCurso = new Curso();
 		novoCurso.setNome("Java");
 		novoCurso.setCategoria("Programação");
@@ -38,7 +38,7 @@ public class CursoRepositoryTest {
 	}
 
 	@Test
-	public void naoDeveRetornarCursoNaoCadastrado() {
+	void naoDeveRetornarCursoNaoCadastrado() {
 		final var nomeCurso = "HTML 5";
 		final var curso = this.cursoRepository.findByNome(nomeCurso);
 		assertNull(curso);
